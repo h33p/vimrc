@@ -13,12 +13,8 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
-Install rust-analyzer (the line below is for Linux):
-
-```
-curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o ~/.local/bin/rust-analyzer
-chmod +x ~/.local/bin/rust-analyzer
-```
+Install nodejs (this will probably be not necessary later on):
+`curl -sL install-node.now.sh/lts | bash`
 
 Copy the config:
 
@@ -28,7 +24,28 @@ cp vimrc ~/.vimrc
 
 Run vim, ignore errors, and call `:PlugInstall`
 
+Afterwards, run `:CocInstall coc-rust-analyzer` for Rust support
+
 
 ### Bindings?
 
-Basically, `\D` is supposed to show docs on the selected item in the code. I didn't have it on hover, because I use terminal vim, and having it show all the time was a bit too much for me.
+AutoPairs FastWrap, and BackInsert were rebound to use the Control key, as opposed to Meta (Alt). 
+
+Leader-B (`\B`) shows git-blame summary.
+
+Auto completion was made to be completed using TAB key.
+
+Some extra CoC configuration for normal mode:
+
+- gd - go to definition
+- gy - go to type definition
+- gi - go to implementation
+- gr - print references
+- K - show docs
+
+NerdTREE stuff is straight up C+P from their README:
+
+- Leader-N - NerdTREEFocus
+- `C-n` - NerdTREE
+- `C-t` - NerdTREEToggle
+- `C-f` - NerdTREEFind
