@@ -17,12 +17,14 @@ let g:lightline = {
 \   'active': {
 \     'left':[ [ 'mode', 'paste' ],
 \              [ 'gitbranch', 'readonly', 'filename', 'modified' ]
-\     ]
+\     ],
+\     'right': [['lineinfo'], ['percent'], ['cocstatus', 'fileformat', 'fileencoding', 'filetype']]
 \   },
 \   'component': {
 \     'lineinfo': '%3l:%-2v'
 \   },
 \   'component_function': {
+\     'cocstatus': 'coc#status',
 \     'gitbranch': 'fugitive#head',
 \   }
 \ }
@@ -119,7 +121,7 @@ call coc#config("diagnostic.hintSign", "\u2192")
 " Autopairs
 let g:AutoPairsShortcutFastWrap = '<C-e>'
 let g:AutoPairsShortcutBackInsert = '<C-b>'
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
 
 " NERDTree
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -127,6 +129,7 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 let g:NERDTreeWinPos = "right"
+let NERDTreeCustomOpenArgs = {'file':{'where':'t'}}
 
 " Other Keybindings
 nnoremap <Leader>b :<C-u>call gitblame#echo()<CR>
